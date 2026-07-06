@@ -1,0 +1,15 @@
+#Python bytecode
+__pycache__/
+*.pyc[cod]
+
+#Virtual environment
+venv/
+.venv/
+
+#IDE Settings
+.vscode/
+.idea/
+
+#OPerating system files
+.DS_Store
+Thumbs.db
