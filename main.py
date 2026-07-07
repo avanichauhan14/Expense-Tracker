@@ -1,29 +1,25 @@
-import csv
-import os
+from storage import initialise_file
+from expense_manager import(add_expense, add_income, view_transactions)
 
-file_name = "expenses.csv"
+initialise_file()
 
-header = ["Date", "Type", "Category", "Amount", "Description"]
+print("\n-----  Hey, this is your expense tracker!!!  -----")
 
-def initialise_file():
-    if not os.path.exists(file_name):
-        with open(file_name, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(header)
-
-def read_transaction():
-    with open(file_name, "r", newline="") as f:
-        reader = csv.reader(f)
-        next(reader)
-        return list(reader)
+while True:
+    print("Type 1 for Expense")
+    print("Type 2 for Income")
+    print("Type 3 for View Transactions")
+    print("Type 4 for Exit")
     
-def add_transaction(transaction):
-    with open(file_name, "a", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(transaction)
-
-def overwrite_transactions(transactions):
-    with open(file_name, "w", newline=""):
-        writer = csv.writer
-        writer.writerow(header)
-        writer.writerow(transactions)
+    choice = int(input("Enter your choice: "))
+    if choice==1:
+        add_expense()
+    elif choice==2:
+        add_income()
+    elif choice==3:
+        view_transactions()
+    elif choice==4:
+        print("Thank you for using the expense tracker.")
+        break
+    else:
+        print("Invalid choice")
