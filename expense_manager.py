@@ -29,11 +29,13 @@ def view_transactions():
         return
     print("\nAll transactions:\n")
     for transaction in transactions:
-        print(f"Date: {transaction[0]} | "
-              f"Type: {transaction[1]} | "
-              f"Category: {transaction[2]} | "
-              f"Amount: ₹{transaction[3]} | "
-              f"Description: {transaction[4]}")
+        print("-" * 40)
+        print(f"Date        : {transaction[0]}")
+        print(f"Type        : {transaction[1]}")
+        print(f"Category    : {transaction[2]}")
+        print(f"Amount      : ₹{transaction[3]}")
+        print(f"Description : {transaction[4]}")
+        print("-" * 40)
 
 def search_transaction():
     transactions = read_transaction()
@@ -43,18 +45,20 @@ def search_transaction():
     keyword = input("Enter category or description to search:").strip().lower()
     found = False
     
-    print("Matching transaction:\n")
+    print("Matching Transactions:\n")
     
     for transaction in transactions:
         category = transaction[2].lower()
         description = transaction[4].lower()
 
         if keyword in category or keyword in description:
-            print(f"Date: {transaction[0]} | "
-                  f"Type: {transaction[1]} | "
-                  f"Category: {transaction[2]} | "
-                  f"Amount: ₹{transaction[3]} | "
-                  f"Description: {transaction[4]}")
+            print("-" * 40)
+            print(f"Date        : {transaction[0]}")
+            print(f"Type        : {transaction[1]}")
+            print(f"Category    : {transaction[2]}")
+            print(f"Amount      : ₹{transaction[3]}")
+            print(f"Description : {transaction[4]}")
+            print("-" * 40)
             found = True
 
     if not found:
