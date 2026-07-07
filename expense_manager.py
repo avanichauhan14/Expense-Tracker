@@ -59,3 +59,24 @@ def search_transaction():
 
     if not found:
         print("No matching transaction found.")
+
+def delete_transaction():
+    transactions = read_transaction()
+    if not transactions:
+        print("\nNo transaction found\n")
+        return
+    
+    print("\n Transactions: \n")
+    for i, transaction in enumerate(transactions, start=1):
+        print(f"{i}. {transaction}")
+
+    try:
+        choice = int(input("Enter the serial no. of transaction that you want to delete"))
+        if 1<=choice<=len(transactions):
+            transactions.pop(choice-1)
+            overwrite_transactions(transactions)
+            print("\n Transaction deleted successfully \n")
+        else:
+            print("\n Invalid transaction no \n")
+    except ValueError:
+        print("\n Please enter a valid no. \n")

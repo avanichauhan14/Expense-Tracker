@@ -23,7 +23,7 @@ def add_transaction(transaction):
         writer.writerow(transaction)
 
 def overwrite_transactions(transactions):
-    with open(file_name, "w", newline=""):
-        writer = csv.writer
+    with open(file_name, "w", newline="") as f:
+        writer = csv.writer(f)
         writer.writerow(header)
-        writer.writerow(transactions)
+        writer.writerows(transactions)
