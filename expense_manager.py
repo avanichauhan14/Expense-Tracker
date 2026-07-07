@@ -29,4 +29,33 @@ def view_transactions():
         return
     print("\nAll transactions:\n")
     for transaction in transactions:
-        print(transaction)
+        print(f"Date: {transaction[0]} | "
+              f"Type: {transaction[1]} | "
+              f"Category: {transaction[2]} | "
+              f"Amount: ₹{transaction[3]} | "
+              f"Description: {transaction[4]}")
+
+def search_transaction():
+    transactions = read_transaction()
+    if not transactions:
+        print("\nNo transaction found\n")
+        return
+    keyword = input("Enter category or description to search:").strip().lower()
+    found = False
+    
+    print("Matching transaction:\n")
+    
+    for transaction in transactions:
+        category = transaction[2].lower()
+        description = transaction[4].lower()
+
+        if keyword in category or keyword in description:
+            print(f"Date: {transaction[0]} | "
+                  f"Type: {transaction[1]} | "
+                  f"Category: {transaction[2]} | "
+                  f"Amount: ₹{transaction[3]} | "
+                  f"Description: {transaction[4]}")
+            found = True
+
+    if not found:
+        print("No matching transaction found.")
