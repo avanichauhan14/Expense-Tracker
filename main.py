@@ -1,5 +1,5 @@
 from storage import initialise_file
-from expense_manager import(add_expense, add_income, view_transactions, search_transaction, delete_transaction)
+from expense_manager import(add_expense, add_income, view_transactions, search_transaction, delete_transaction, edit_transaction)
 
 initialise_file()
 
@@ -11,7 +11,8 @@ while True:
     print("Type 3 for View Transactions")
     print("Type 4 for Search Transactions")
     print("Type 5 for Delete Transactions")
-    print("Type 6 for Exit")
+    print("Type 6 for Edit Transactions")
+    print("Type 7 for Exit")
     
     choice = int(input("Enter your choice: "))
     if choice==1:
@@ -25,6 +26,8 @@ while True:
     elif choice==5:
         delete_transaction()
     elif choice==6:
+        edit_transaction()
+    elif choice==7:
         print("Thank you for using the expense tracker.")
         break
     else:

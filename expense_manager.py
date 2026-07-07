@@ -71,11 +71,39 @@ def delete_transaction():
         print(f"{i}. {transaction}")
 
     try:
-        choice = int(input("Enter the serial no. of transaction that you want to delete"))
+        choice = int(input("Enter the serial no. of transaction that you want to delete: "))
         if 1<=choice<=len(transactions):
             transactions.pop(choice-1)
             overwrite_transactions(transactions)
             print("\n Transaction deleted successfully \n")
+        else:
+            print("\n Invalid transaction no \n")
+    except ValueError:
+        print("\n Please enter a valid no. \n")
+
+def edit_transaction():
+    transactions = read_transaction()
+    if not transactions:
+        print("\nNo transaction found\n")
+        return
+    
+    print("\n Transactions: \n")
+    for i, transaction in enumerate(transactions, start=1):
+        print(f"{i}. {transaction}")
+
+    try:
+        choice = int(input("Enter the serial no. of transaction that you want to edit: "))
+        if 1<=choice<=len(transactions):
+            print("\nEnter new details:\n")
+            date = input("Enter date (format: YYYY-MM-DD): ")
+            type = input("Enter (Income/Expense): ")
+            category = input("Enter category: ")
+            amount = input("Enter amount (in rupees): ")
+            description = input("Enter description: ")
+
+            transactions[choice-1] = [date, type, category, amount, description]
+            overwrite_transactions(transactions)
+            print("\n Transaction updated successfully \n")
         else:
             print("\n Invalid transaction no \n")
     except ValueError:
